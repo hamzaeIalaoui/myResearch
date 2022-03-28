@@ -9,6 +9,7 @@ const app=express();
 app.use(cors());
 
 
+
 //implimentation of the routes
 
 
@@ -23,8 +24,7 @@ app.use(cors());
 
 
 
-
-//runung the server
+//running the server
 app.listen(3001,()=>{
     console.log('server is running on port 3001');
 }
