@@ -1,0 +1,15 @@
+{
+  "name": "myresearchserver",
+  "version": "1.0.0",
+  "description": "Research project server using MERN approach",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Server-branch"
+  },
+  "author": "",
+  "license": "ISC"
+}
