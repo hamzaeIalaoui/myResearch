@@ -4,6 +4,8 @@
   "description": "Research project server using MERN approach",
   "main": "index.js",
   "scripts": {
+    "devStart": "nodemon index.js",
+    "devStartAuth":"nodemon authServer.js",
     "test": "node index.js"
   },
   "repository": {
@@ -14,7 +16,13 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "mongoose": "^6.2.9"
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.9",
+    "promisify": "^0.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
