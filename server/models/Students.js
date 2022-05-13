@@ -5,18 +5,17 @@ const mongoose = require('mongoose');
 
 
 const StudentsSchema = new mongoose.Schema({
-    id:{
-        type:integer,
-        required:true,
-        unique:true ,
-        
-      },
+     id: {
+        type: Number ,
+        required: true,
+        unique: true
+    },
       name:{
         type:String,
         required:true,
 
       },
-      classfication:{
+      classification:{
         type:String,
         required:true,
       },
