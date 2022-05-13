@@ -16,7 +16,7 @@ const StudentsSchema = new mongoose.Schema({
         required:true,
 
       },
-      classfication:{
+      classification:{
         type:String,
         required:true,
       },
