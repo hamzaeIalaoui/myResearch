@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 const StudentsSchema = new mongoose.Schema({
     id:{
-        type:integer,
+        type:Number,
         required:true,
         unique:true ,
         
