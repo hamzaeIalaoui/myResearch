@@ -1,2 +1,6 @@
-# myResearch
-A web app built by students to help matching students and faculty from all the departments of Al Akhawayn University to collaborate on research projects.
+# myResearch Server
+Using NodeJs, Express, MongoDB
+
+
+to clone the project from the Server-branch you should go through this process: git clone -b Server-branch repository-url
+
