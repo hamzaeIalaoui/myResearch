@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 
 
-const StudentsSchema = new mongoose.Schema({
+const StudentSchema = new mongoose.Schema({
     id:{
         type:Number,
         required:true,
@@ -29,5 +29,5 @@ const StudentsSchema = new mongoose.Schema({
 });
 
 
-const Students = mongoose.model('Students',StudentsSchema);
-module.exports=Students;
+const Student = mongoose.model('Students',StudentSchema);
+module.exports=Student;

@@ -8,12 +8,12 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3001/test
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidGVzdCIsImlhdCI6MTY1MjQ1MzY2MCwiZXhwIjoxNjUyNDU3MjYwfQ.Ol5nIs6ofnAi6LRrI8ov9ktYq9jGahIY0iLT1jyoqcA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidGVzdCIsImlhdCI6MTY1MzM0NzU3NywiZXhwIjoxNjUzMzUxMTc3fQ.ccK5X6-wn0Gw0ZssWg6nkSughRC94oo6l_VYOJPYshA
 
 ###
-POST http://localhost:3001/addStudent
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidGVzdCIsImlhdCI6MTY1MjQ1MzY2MCwiZXhwIjoxNjUyNDU3MjYwfQ.Ol5nIs6ofnAi6LRrI8ov9ktYq9jGahIY0iLT1jyoqcA
+POST http://localhost:3001/api/student
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidGVzdCIsImlhdCI6MTY1MzM0NzU3NywiZXhwIjoxNjUzMzUxMTc3fQ.ccK5X6-wn0Gw0ZssWg6nkSughRC94oo6l_VYOJPYshA
     
     {
         "id":82626,
