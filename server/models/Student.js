@@ -11,21 +11,32 @@ const StudentSchema = new mongoose.Schema({
         unique:true ,
         
       },
-      name:{
+      FullName:{
         type:String,
         required:true,
 
       },
-      classification:{
+      email:{
         type:String,
         required:true,
+        unique:true,
       },
-      school:{
-        type:String,
+      ResearchInterests:{
+        type:Array,
         required:true,
       },
- 
-
+      experience:{
+        type:Array,
+        required:true,
+      },
+      publications:{
+        type:Array,
+        required:true,
+      },
+      CV:{
+       type:Array,
+        required:true,
+      }
 });
 
 

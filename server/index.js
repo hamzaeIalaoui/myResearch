@@ -5,6 +5,9 @@ const app = express()
 const jwt = require('jsonwebtoken')
 const mongoose = require('mongoose')
 const studentRoutes = require('./routes/student-routes')
+const facultyRoutes = require('./routes/faculty-routes')
+const projectRoutes = require('./routes/project-routes')
+
 
 
 app.use(express.json())
@@ -13,8 +16,9 @@ app.use(express.json())
 mongoose.connect(process.env.MONGO_DB, { useNewUrlParser: true })
 
 
-app.route('/api/student')
-.post(authenticateToken, studentRoutes.routes)
+app.use('/api/student', authenticateToken, studentRoutes.routes)
+app.use('/api/faculty', authenticateToken, facultyRoutes.routes)
+app.use('/api/project', authenticateToken, projectRoutes.routes)
 
 
 app.get('/test', authenticateToken, (req, res) => {
