@@ -7,3 +7,5 @@
 <li>Controller:<br/>This file contains the logic behind each CRUD operation</li>
 </ul>
 <p>To secure access to the different directories api, we opted for a Oauth Token Based ( Accessing each directory of the API needs a authentification token</p> 
+
+<p>Demo of the app can be found at: <a href="https://www.youtube.com/watch?v=S2ymQxuPGRc">youtube</a></p>

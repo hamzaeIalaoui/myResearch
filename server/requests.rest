@@ -8,12 +8,12 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3001/test
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidGVzdCIsImlhdCI6MTY1MzY2NzY4MywiZXhwIjoxNjUzNjcxMjgzfQ.SKBVbjL86ruuvX8A2YsAbFUbMa1pe49S7h8yrWy5m7E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidGVzdCIsImlhdCI6MTY1MzY3MTYwNywiZXhwIjoxNjUzNjc1MjA3fQ.mBmvjkimDPEbwdY2qpbWtnhhNoYeh7l7sWntYZDN7TY
 
 ###
 POST http://localhost:3001/api/student/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidGVzdCIsImlhdCI6MTY1MzY2Nzg4NywiZXhwIjoxNjUzNjcxNDg3fQ.OkGV1ctDYZYNZEE4I-Km3hxBTsfN9QKV1dm0sCKYjI4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidGVzdCIsImlhdCI6MTY1MzY3MTYwNywiZXhwIjoxNjUzNjc1MjA3fQ.mBmvjkimDPEbwdY2qpbWtnhhNoYeh7l7sWntYZDN7TY
     
     {
        "id": 1,
