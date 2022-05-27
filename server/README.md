@@ -1,10 +1,9 @@
-MyResearch Server side was done using the Rest API aproach along with The MVC architecture.
-<br/>
+<p>MyResearch Server side was done using the Rest API aproach along with The MVC architecture.</p>
 
-Three folders each representing the MVC architecture:<br/>
-- models:<br/>
-    This file contains all the objects schema for the database: Student,Project,Faculty<br/>
--routes:<br/>
-    This file contains the routes for the different objects of the database, Notably The CRUD routes(get_id,get_name...)<br/>
--Controller:<br/>
-    This file contains the logic behind each CRUD operation<br/>
+<p>Three folders each representing the MVC architecture:</p>
+<ul>
+<li>models: <br/>This file contains all the objects schema for the database: Student,Project,Faculty</li>
+<li>routes:<br/>This file contains the routes for the different objects of the database, Notably The CRUD routes(get_id,get_name...)</li>
+<li>Controller:<br/>This file contains the logic behind each CRUD operation</li>
+</ul>
+<p>To secure access to the different directories api, we opted for a Oauth Token Based ( Accessing each directory of the API needs a authentification token</p> 
