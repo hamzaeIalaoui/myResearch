@@ -35,7 +35,7 @@ const StudentSchema = new mongoose.Schema({
       },
       CV:{
        type:Array,
-        required:true,
+        required:false,
       }
 });
 
