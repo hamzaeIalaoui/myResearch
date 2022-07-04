@@ -1,0 +1,332 @@
+:root {
+  --primary-color: #6f52ed;
+  --secondary-color: #373b53;
+}
+
+/* Css reset  */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-family: "Abel", sans-serif;
+  font-family: "Mulish", sans-serif;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* reset css end  */
+.logo {
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 63px;
+}
+.logo img {
+  width: 40px;
+}
+.side-bar .MuiDrawer-paperAnchorDockedLeft {
+  background-color: var(--secondary-color);
+}
+.side-bar .MuiDrawer-paperAnchorDockedLeft ul {
+  padding-inline: 10px;
+  padding-top: 20px;
+}
+.side-bar .MuiDrawer-paperAnchorDockedLeft ul li .MuiListItemIcon-root {
+  min-width: auto;
+  color: #969cba;
+}
+.sidebar-list-item {
+  width: 40px !important;
+  margin-inline: auto !important;
+  height: 40px;
+  margin-bottom: 10px;
+}
+.sidebar-list-item.active {
+  background: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+.sidebar-list-item > div {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  background-color: #fff !important;
+}
+
+.header-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.user-options {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 15px;
+  position: relative;
+}
+.user-options::before {
+  content: "";
+  width: 2px;
+  height: 30px;
+  background-color: #c9ced6;
+  position: absolute;
+  top: -1px;
+  left: -15px;
+}
+.user-dropdown {
+  color: #c9ced6;
+}
+.user-dropdown > div {
+  margin-right: 10px;
+  text-align: right;
+  font-family: "Abel", sans-serif;
+}
+.user-dropdown > div h3 {
+  color: var(--secondary-color);
+  font-size: 14px;
+  font-family: "Abel", sans-serif;
+  font-weight: 600;
+}
+.user-dropdown > div h6 {
+  color: #c9ced6;
+  font-weight: 400;
+  font-size: 12px;
+  font-family: "Abel", sans-serif;
+}
+.header-search-input {
+  background: transparent;
+  color: #c9ced6;
+  border-bottom: 2px solid #c9ced6;
+  border-radius: 0px;
+  font-family: "Abel", sans-serif;
+}
+
+.btn {
+  font-size: 16px;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  height: 150px;
+}
+
+.card-content .MuiAvatar-root {
+  justify-content: center;
+  margin-inline: auto;
+}
+
+.portal-table {
+  margin-top: 30px;
+}
+
+.portal-table table thead th {
+  font-weight: 700;
+  font-size: 14px;
+  color: #9fa2b4;
+  font-family: "Mulish", sans-serif;
+}
+.portal-table table tbody th,
+.portal-table table tbody td {
+  font-weight: 600;
+  font-size: 14px;
+  color: #252733;
+  font-family: "Mulish", sans-serif;
+}
+
+.portal-table table tbody .data-time {
+  font-weight: 400;
+  font-size: 12px;
+  color: #c5c7cd;
+}
+
+.portal-table table tbody .progress-chip {
+  font-weight: 700;
+  font-size: 11px;
+  color: #ffffff;
+  width: 70px;
+  height: 24px;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.portal-table table tbody .progress-chip.error {
+  background: #f12b2c;
+}
+.portal-table table tbody .progress-chip.info {
+  background: #fec400;
+}
+.portal-table table tbody .progress-chip.success {
+  background: #29cc97;
+}
+
+.portal-table table tbody .table-action {
+  color: #231f20;
+  cursor: pointer;
+}
+.edit-modal .css-sox5kk-MuiBackdrop-root {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.edit-modal h2 {
+  font-weight: 600;
+  font-size: 20px;
+  color: #54595e;
+  font-family: "Mulish", sans-serif;
+}
+.edit-modal p {
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Mulish", sans-serif;
+  color: rgba(84, 89, 94, 0.6);
+}
+
+.close-btn {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  /* text-align: right; */
+}
+.editor-box .MUIRichTextEditor-root-43 {
+  min-height: 300px;
+  background: #ffffff;
+  border-width: 1px 1px 0px 1px;
+  border-style: solid;
+  border-color: #cfd0d7;
+}
+
+.editor-box .MUIRichTextEditor-editorContainer-47 {
+  padding: 8px 8px 8px 8px;
+}
