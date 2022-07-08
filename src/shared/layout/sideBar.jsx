@@ -12,8 +12,12 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import MailIcon from "@mui/icons-material/Mail";
 import { Logo } from "../../utils/images";
+import { Link, useLocation } from "react-router-dom";
+import { ALLAssignmentProfessor } from "../../router/routes";
+import { sidebarRoutes } from "../../router/sidebar";
 export default function Sidebar(props) {
   const { window, mobileOpen, handleDrawerToggle, drawerWidth } = props;
+  const { pathname } = useLocation();
 
   const drawer = (
     <div>
@@ -21,7 +25,20 @@ export default function Sidebar(props) {
         <img src={Logo} alt="" />
       </div>
       <List>
-        <ListItem className="sidebar-list-item active" disablePadding>
+        {sidebarRoutes.map(({ link, icon }, idx) => (
+          <ListItem
+            className={`sidebar-list-item ${link === pathname ? "active" : ""}`}
+            disablePadding
+            key={Math.random() + idx}
+          >
+            <Link to={link}>
+              <ListItemButton>
+                <ListItemIcon>{icon}</ListItemIcon>
+              </ListItemButton>
+            </Link>
+          </ListItem>
+        ))}
+        {/* <ListItem className="sidebar-list-item active" disablePadding>
           <ListItemButton>
             <ListItemIcon>
               <FolderOpenIcon />
@@ -29,11 +46,13 @@ export default function Sidebar(props) {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <ListAltRoundedIcon />
-            </ListItemIcon>
-          </ListItemButton>
+          <Link to={ALLAssignmentProfessor}>
+            <ListItemButton>
+              <ListItemIcon>
+                <ListAltRoundedIcon />
+              </ListItemIcon>
+            </ListItemButton>
+          </Link>
         </ListItem>
         <ListItem disablePadding>
           <ListItemButton>
@@ -48,7 +67,7 @@ export default function Sidebar(props) {
               <InsertDriveFileOutlinedIcon />
             </ListItemIcon>
           </ListItemButton>
-        </ListItem>
+        </ListItem> */}
       </List>
     </div>
   );

@@ -1,7 +1,11 @@
-import { Home, EditAssignmentProfessor, ALLAssignmentProfessor } from '../routes';
-import EditAssignment from '../../components/professor-dashboard/editAssignment';
+import { Home, EditAssignmentProfessor, ALLAssignmentProfessor, AssignmentDetails, InformationRoute, CandidateRoute, AllAssignmentsDetails } from '../routes';
+import EditAssignmentsPage from '../../views/edit-assignment';
 import ProfessorDashBoard from '../../views/professor-dashboard';
-import AllAssignments from '../../components/professor-dashboard/allAssignments';
+import AllAssignmentsPage from '../../views/all-assignments';
+import AssignmentDetailsPage from "../../views/assignment-details"
+import InformationPage from "../../views/informations"
+import CandidatePage from '../../views/candidate';
+import AllAssignmentsDetailsPage from '../../views/all-assignment-details';
 
 
 const publicRoutes = [
@@ -18,12 +22,32 @@ const publicRoutes = [
     {
         path: ALLAssignmentProfessor,
         title: 'AllAssignments',
-        component: AllAssignments,
+        component: AllAssignmentsPage,
     },
     {
         path: EditAssignmentProfessor,
         title: 'Assignment',
-        component: EditAssignment,
+        component: EditAssignmentsPage,
+    },
+    {
+        path: AssignmentDetails,
+        title: 'Assignment Details',
+        component: AssignmentDetailsPage,
+    },
+    {
+        path: InformationRoute,
+        title: 'Information page',
+        component: InformationPage,
+    },
+    {
+        path: CandidateRoute,
+        title: 'Candidate page',
+        component: CandidatePage,
+    },
+    {
+        path: AllAssignmentsDetails,
+        title: 'All Assignment Detail page',
+        component: AllAssignmentsDetailsPage,
     },
 ];
 

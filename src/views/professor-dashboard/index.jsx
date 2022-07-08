@@ -1,5 +1,7 @@
 import ProfessorDashBoardHome from "../../components/professor-dashboard";
 
-export default function ProfessorDashBoard() {
+const ProfessorDashBoard = () => {
   return <ProfessorDashBoardHome />;
-}
+};
+
+export default ProfessorDashBoard;

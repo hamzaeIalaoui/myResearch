@@ -13,8 +13,20 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import TablePagination from "@mui/material/TablePagination";
 import { Link } from "@mui/material";
+import Button from "@mui/material/Button";
+import { useTheme } from "@material-ui/core";
+import { AllAssignmentsDetails } from "../../router/routes";
+import { useHistory } from "react-router-dom";
+import { userIcon } from "../../utils/images";
+import Avatar from "@mui/material/Avatar";
 
 export default function AllAssignments(props) {
+  const { push } = useHistory();
+  const theme = useTheme();
+
+  const onRowClick = (state) => {
+    push(AllAssignmentsDetails, state);
+  };
   function createData(
     assignmentName,
     student,
@@ -31,31 +43,35 @@ export default function AllAssignments(props) {
       "Tom Cruise",
       "May 26, 2019",
       "Annette Watson",
-      "LATE"
+      "open"
     ),
     createData(
       "A PROBABILISTIC APPROACH TOWARDS HANDLING DATA QUALITY PROBLEMS AND IMPERFECT DATA ...",
       "Tom Cruise",
       "May 26, 2019",
-      "pending"
+      "Annette Watson",
+      "close"
     ),
     createData(
       "A PROBABILISTIC APPROACH TOWARDS HANDLING DATA QUALITY PROBLEMS AND IMPERFECT DATA ...",
       "Tom Cruise",
       "May 26, 2019",
-      "FINISHED"
+      "Annette Watson",
+      "open"
     ),
     createData(
       "A PROBABILISTIC APPROACH TOWARDS HANDLING DATA QUALITY PROBLEMS AND IMPERFECT DATA ...",
       "Tom Cruise",
       "May 26, 2019",
-      "LATE"
+      "Annette Watson",
+      "close"
     ),
     createData(
       "A PROBABILISTIC APPROACH TOWARDS HANDLING DATA QUALITY PROBLEMS AND IMPERFECT DATA ...",
       "Tom Cruise",
       "May 26, 2019",
-      "pending"
+      "Annette Watson",
+      "open"
     ),
   ];
   const [page, setPage] = React.useState(0);
@@ -84,14 +100,14 @@ export default function AllAssignments(props) {
           <Grid item xs={2}></Grid>
           <Grid item xs={4}>
             <Stack className="justify-content-end" direction="row" spacing={2}>
-              <Link
-                to="/"
+              <Button
                 size="small"
                 variant="contained"
+                style={theme.palette.primary.buttonContained}
                 endIcon={<AddOutlinedIcon />}
               >
                 Create new Assignment
-              </Link>
+              </Button>
             </Stack>
           </Grid>
         </Grid>
@@ -112,6 +128,8 @@ export default function AllAssignments(props) {
                   key={row.assignmentName}
                   hover={true}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  onClick={() => onRowClick(row)}
+                  style={theme.palette.primary.tableStyles}
                 >
                   <TableCell component="th" scope="row">
                     {row.assignmentName}
@@ -126,18 +144,22 @@ export default function AllAssignments(props) {
                     <div className="data-time">6:30 PM</div>
                   </TableCell>
                   <TableCell align="left">
+                    <div className="d-flex align-items-center gap-2">
+                      <Avatar alt="Remy Sharp" src={userIcon} />
+                      {row.supervisor}
+                    </div>
+                  </TableCell>
+                  <TableCell align="left">
                     <div
-                      className={`progress-chip ${
-                        row.progress == "LATE"
+                      className={`status-chip ${
+                        row.status == "close"
                           ? "error"
-                          : row.progress == "pending"
-                          ? "info"
-                          : row.progress == "FINISHED"
+                          : row.status == "open"
                           ? "success"
                           : ""
                       }`}
                     >
-                      {row.progress}
+                      {row.status}
                     </div>
                   </TableCell>
                 </TableRow>

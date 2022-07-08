@@ -12,11 +12,23 @@ import Button from "@mui/material/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import MUIRichTextEditor from "mui-rte";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useHistory, useLocation } from "react-router-dom";
 
 export default function EditAssignment() {
+  const { state } = useLocation();
+
+  const [values] = useState(
+    state
+      ? {
+          assignmentTitle: state.assignmentName,
+        }
+      : {}
+  );
   const myTheme = createTheme({
     // Set up your custom MUI theme here
   });
+  const { goBack } = useHistory();
+
   return (
     <Box sx={{ width: "100%", py: 2 }}>
       <Grid container spacing={2}>
@@ -73,7 +85,11 @@ export default function EditAssignment() {
               />
             </FormGroup>
             <div className="d-flex flex-column gap-2">
-              <Button variant="outlined" startIcon={<ArrowBackIcon />}>
+              <Button
+                variant="outlined"
+                startIcon={<ArrowBackIcon />}
+                onClick={() => goBack()}
+              >
                 DISCARD
               </Button>
               <Button variant="contained">Publish</Button>
@@ -91,6 +107,7 @@ export default function EditAssignment() {
           label="Eg. your text here"
           variant="outlined"
           className="mb-3"
+          value={values?.assignmentTitle ?? ""}
         />
       </Box>
       <div className="editor-box">
