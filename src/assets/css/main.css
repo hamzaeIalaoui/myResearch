@@ -353,3 +353,6 @@ table {
 .editor-box .MUIRichTextEditor-editorContainer-47 {
   padding: 8px 8px 8px 8px;
 }
+.hero-banner {
+  background-image: url(../images/HeroBannerBG.png);
+}

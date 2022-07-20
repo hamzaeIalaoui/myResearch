@@ -1,9 +1,9 @@
-import Login from "../../views/login";
+import Landing from "../../views/landing";
 const authRoutes = [
   {
     path: "/",
     title: "Login",
-    component: Login,
+    component: Landing,
   },
 ];
 
