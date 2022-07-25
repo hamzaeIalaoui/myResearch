@@ -2,6 +2,7 @@
 'use strict';
 const {MongoClient} = require('mongodb')
 const UserSchem=require('../models/User')
+const jwt = require('jsonwebtoken')
 
 
 const client= new MongoClient(process.env.MONGODB_URI)
@@ -38,7 +39,18 @@ exports.signInOutlook = (req, res) => {
     fetch(url, options)
         .then(response => response.json())
         .then(data => {
-            res.send(data)
+            //create a jwt token
+            const token = jwt.sign({
+                name: data.displayName,
+                email: data.email,
+                id: data.id,
+                department: data.department,
+                jobTitle: data.jobTitle,
+                officeLocation: data.officeLocation,
+            }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' })
+
+            res.send(token)
+            
         }
         )
 

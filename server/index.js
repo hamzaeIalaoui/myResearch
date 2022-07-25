@@ -4,9 +4,12 @@ const app = express()
 const jwt = require('jsonwebtoken')
 const {MongoClient} = require('mongodb')
 const userRoutes = require('./routes/users-routes')
+const cors = require('cors')
 
 
 app.use(express.json())
+//allow cross origin requests
+
 const client= new MongoClient(process.env.MONGODB_URI)
 client.connect(err => {
   if (err) {
@@ -15,6 +18,17 @@ client.connect(err => {
   console.log('Connected to database')
 }
 )
+app.use(cors(
+    {
+        origin: 'http://localhost:3000',
+        credentials: true,
+        methods: 'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+        
+    }
+
+))
+
+
 
 app.get('/test', authenticateToken, (req, res) => {
     res.status(200).json({

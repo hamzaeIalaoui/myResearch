@@ -8,8 +8,13 @@ import PrivateRoute from "./private/route";
 // auth
 import authRoutes from "./auth";
 import AuthRoute from "./auth/route";
+import { useCookies } from "react-cookie";
 
 export default function AppRouter() {
+  const [cookies, setCookie] = useCookies();
+  const isAuthenticated = cookies.accessToken !== undefined;
+  
+ 
   return (
     <Router>
       <Switch>
@@ -30,7 +35,8 @@ export default function AppRouter() {
         ))}
 
         {/* Private routes */}
-        {privateRoutes.map((item, index) => (
+
+        {isAuthenticated? privateRoutes.map((item, index) => (
           <Route
             key={index}
             path={item.path}
@@ -43,7 +49,7 @@ export default function AppRouter() {
               />
             )}
           />
-        ))}
+        )):null }
       </Switch>
     </Router>
   );

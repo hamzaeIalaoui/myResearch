@@ -31,12 +31,20 @@ import * as React from "react";
 // import { useTheme } from "@material-ui/core";
 import ProfessorDashBoardHome from "./professorDashboard";
 import StudentDashboard from "../student-dashboard/studentDashboard";
+import { useCookies } from "react-cookie";
 export default function DashBoard(props) {
-  const type = localStorage.getItem("type");
+  const [cookies, setCookie] = useCookies();
+  const token=cookies.accessToken;
+
+  //decode token to get user type
+  const userType=JSON.parse(atob(token.split(".")[1])).department;
+  
+  
+  
 
   return (
     <>
-      {type == "professor" ? <ProfessorDashBoardHome /> : <StudentDashboard />}
+      { userType==="Student" ? <StudentDashboard /> : <ProfessorDashBoardHome />}
     </>
   );
 }

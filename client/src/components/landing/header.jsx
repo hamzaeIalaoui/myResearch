@@ -18,6 +18,9 @@ import { Logo, microsoftIcon } from "../../utils/images";
 import { Link } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import { msalLogin } from '../../server_assets/auth-provider';
+import { useCookies } from 'react-cookie';
+import axios from "axios";
+
 
 const drawerWidth = 240;
 const navItems = [
@@ -35,9 +38,15 @@ function DrawerAppBar(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [access_token, setAccessToken] = React.useState('');
   const theme = useTheme();
+  const [cookies, setCookie] = useCookies();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+  React.useEffect(() => {
+    if (access_token) {
+      window.location.href = "http://localhost:3000/home";
+    }
+  }, [access_token]);
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
@@ -63,9 +72,53 @@ function DrawerAppBar(props) {
     window !== undefined ? () => window().document.body : undefined;
   const handleLogin = async () => {
     const data = await msalLogin();
-    console.log(data);
+
+
     if (data) {
-      setAccessToken(data.accessToken);
+      await axios.post("http://localhost:4000/login", {
+        email: process.env.REACT_APP_EMAIL,
+        password: process.env.REACT_APP_PASSWORD,
+      }).then((res) => {
+
+        axios.post("http://localhost:3001/api/users/sign-in-outlook", {
+          accessToken: data.accessToken,
+
+        },
+          {
+            headers: {
+              'Authorization': "Bearer " + res.data.accessToken,
+              'Content-Type': 'application/json'
+
+
+            }
+          }
+
+        ).then((res) => {
+          setCookie('accessToken', res.data);
+          setAccessToken(res.data);
+
+
+        }
+        ).catch((err) => {
+          console.log(err);
+        }
+        )
+
+
+
+      }
+      ).catch((err) => {
+        console.log(err);
+      }
+      )
+
+
+
+
+
+
+
+
 
 
     }
@@ -107,7 +160,7 @@ function DrawerAppBar(props) {
               <Stack>
                 <Button style={theme.palette.primary.navButton} onClick={() => handleLogin()}>
                   <span className="d-inline-flex">
-                    <img src={microsoftIcon} alt=""  />
+                    <img src={microsoftIcon} alt="" />
                   </span>
                   Login with Microsoft
                 </Button>

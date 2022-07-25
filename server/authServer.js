@@ -7,6 +7,13 @@ const bycrypt = require('bcrypt')
 const {MongoClient} = require('mongodb')
 
 app.use(express.json())
+//cors 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+}
+);
 //refresh token for now are stored locally, in the future they will be stored in the database
 let refreshTokens = []
 
