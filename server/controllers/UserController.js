@@ -23,3 +23,24 @@ exports.getAllUsers = (req, res) => {
         res.send(docs)
     })
 }
+
+exports.signInOutlook = (req, res) => {
+    const collection = client.db('myResearch').collection('users')
+    const accessToken = req.body.accessToken
+    //check token authenticity
+    const url = 'https://graph.microsoft.com/v1.0/me/?$select=department,officeLocation,displayName,email,jobTitle,id'
+    const options = {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + accessToken,
+        }
+    }
+    fetch(url, options)
+        .then(response => response.json())
+        .then(data => {
+            res.send(data)
+        }
+        )
+
+  
+}
