@@ -20,6 +20,7 @@ import Stack from "@mui/material/Stack";
 import { msalLogin } from '../../server_assets/auth-provider';
 import { useCookies } from 'react-cookie';
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 
 const drawerWidth = 240;
@@ -39,12 +40,13 @@ function DrawerAppBar(props) {
   const [access_token, setAccessToken] = React.useState('');
   const theme = useTheme();
   const [cookies, setCookie] = useCookies();
+  const history = useHistory();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
   React.useEffect(() => {
     if (access_token) {
-      window.location.href = "http://localhost:3000/home";
+      history.push("/home");
     }
   }, [access_token]);
 
