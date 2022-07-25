@@ -4,6 +4,7 @@ const app = express()
 const jwt = require('jsonwebtoken')
 const {MongoClient} = require('mongodb')
 const userRoutes = require('./routes/users-routes')
+const studentRoutes = require('./routes/student-routes')
 const cors = require('cors')
 
 
@@ -36,6 +37,8 @@ app.get('/test', authenticateToken, (req, res) => {
     })
 })
 app.use('/api/users', authenticateToken, userRoutes.routes)
+app.use('/api/students', authenticateToken, studentRoutes.routes)
+
 
 
 

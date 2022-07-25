@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -19,10 +19,59 @@ import { Avatar } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import AllStudentAssignments from "./allStudentAssignments";
+import axios from "axios";
+import { useCookies } from 'react-cookie';
+
 
 const StudentDashboard = () => {
   const [archive, setArchive] = useState(false);
   const [addClick, setAddClick] = useState(false);
+  const [assignmentData, setAssignmentData] = useState([]);
+  const [cookies, setCookie] = useCookies();
+
+  useEffect(() => {
+    const token=cookies.accessToken;
+    const id=JSON.parse(atob(token.split(".")[1])).id;
+
+
+     axios.post("http://localhost:4000/login", {
+        email: process.env.REACT_APP_EMAIL,
+        password: process.env.REACT_APP_PASSWORD,
+      }).then((res) => {
+
+        axios.post("http://localhost:3001/api/students/get-assignments", {
+          id: id
+
+        },
+          {
+            headers: {
+              'Authorization': "Bearer " + res.data.accessToken,
+              'Content-Type': 'application/json'
+
+
+            }
+          }
+
+        ).then((res) => {
+          setAssignmentData(res.data);
+
+
+        }
+        ).catch((err) => {
+          console.log(err);
+        }
+        )
+
+
+
+      }
+      ).catch((err) => {
+        console.log(err);
+      }
+      )
+
+
+  }, []);
 
   const { push } = useHistory();
   const theme = useTheme();
@@ -41,68 +90,8 @@ const StudentDashboard = () => {
     e.stopPropagation();
     push(AssignmentDetails, state);
   };
-  const assignmentData = [
-    {
-      title: "Najib Fawzi",
-      designation: "Associate Professor of Computer Science",
-      avatar: MaleAvatar,
-      department: "School of Science and Engineering",
-      assignmentTitle: "Assignment:",
-      assignmentDetail:
-        "UNSUPERVISED LEARNING USING NLP FOR RECOMMENDATION CLUSTERING",
-      status: "LATE",
-    },
-    {
-      title: "Bahija Basima",
-      designation: "Associate Professor of Computer Science",
-      avatar: FemaleAvatar,
-      department: "School of Science and Engineering",
-      assignmentTitle: "Assignment:",
-      assignmentDetail:
-        "UNSUPERVISED LEARNING USING NLP FOR RECOMMENDATION CLUSTERING",
-      status: "PENDING",
-    },
-    {
-      title: "Najib Fawzi",
-      designation: "Associate Professor of Computer Science",
-      avatar: MaleAvatar,
-      department: "School of Science and Engineering",
-      assignmentTitle: "Assignment:",
-      assignmentDetail:
-        "UNSUPERVISED LEARNING USING NLP FOR RECOMMENDATION CLUSTERING",
-      status: "FINISHED",
-    },
-    {
-      title: "Bahija Basima",
-      designation: "Associate Professor of Computer Science",
-      avatar: FemaleAvatar,
-      department: "School of Science and Engineering",
-      assignmentTitle: "Assignment:",
-      assignmentDetail:
-        "UNSUPERVISED LEARNING USING NLP FOR RECOMMENDATION CLUSTERING",
-      status: "FINISHED",
-    },
-    {
-      title: "Najib Fawzi",
-      designation: "Associate Professor of Computer Science",
-      avatar: MaleAvatar,
-      department: "School of Science and Engineering",
-      assignmentTitle: "Assignment:",
-      assignmentDetail:
-        "UNSUPERVISED LEARNING USING NLP FOR RECOMMENDATION CLUSTERING",
-      status: "FINISHED",
-    },
-    {
-      title: "Bahija Basima",
-      designation: "Associate Professor of Computer Science",
-      avatar: FemaleAvatar,
-      department: "School of Science and Engineering",
-      assignmentTitle: "Assignment:",
-      assignmentDetail:
-        "UNSUPERVISED LEARNING USING NLP FOR RECOMMENDATION CLUSTERING",
-      status: "FINISHED",
-    },
-  ];
+
+  
   const pendingAssignment = assignmentData?.filter(
     (item) => item.status != "FINISHED"
   );
@@ -184,7 +173,7 @@ const StudentDashboard = () => {
                           <Stack direction="row" spacing={2}>
                             <Avatar
                               alt="Remy Sharp"
-                              src={item?.avatar}
+                              src={item?.avatar==="MaleAvatar"?MaleAvatar:FemaleAvatar} 
                               style={theme.palette.primary.studentCardAvatar}
                             />
 
@@ -281,7 +270,8 @@ const StudentDashboard = () => {
                           <Stack direction="row" spacing={2}>
                             <Avatar
                               alt="Remy Sharp"
-                              src={item?.avatar}
+                              src={item?.avatar==="MaleAvatar"?MaleAvatar:FemaleAvatar}
+                  
                               style={theme.palette.primary.studentCardAvatar}
                             />
 
