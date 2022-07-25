@@ -23,7 +23,13 @@ import Badge from "@mui/material/Badge";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 
+import { useCookies } from "react-cookie";
+
 export default function Header({ handleDrawerToggle, drawerWidth }) {
+  const [cookies, setCookie] = useCookies();
+  const token=cookies.accessToken;
+  const user=JSON.parse(atob(token.split(".")[1]));
+
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
     borderRadius: theme.shape.borderRadius,
@@ -162,8 +168,8 @@ export default function Header({ handleDrawerToggle, drawerWidth }) {
                 spacing={2}
               >
                 <div>
-                  <h3>Cody Simmmons</h3>
-                  <h6>Lecturer</h6>
+                  <h3>{user.name}</h3>
+                  <h6>{user.department}</h6>
                 </div>
                 <Avatar alt="Remy Sharp" src={userIcon} />
               </Button>
