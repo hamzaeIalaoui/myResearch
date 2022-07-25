@@ -1,0 +1,11 @@
+{
+  "name": "myresearchapi",
+  "version": "1.0.0",
+  "description": "my research api for the server side",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alami Idrissi Mehdi",
+  "license": "ISC"
+}
