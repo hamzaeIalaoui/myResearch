@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const jwt = require('jsonwebtoken')
 const {MongoClient} = require('mongodb')
+const userRoutes = require('./routes/users-routes')
 
 
 app.use(express.json())
@@ -20,6 +21,8 @@ app.get('/test', authenticateToken, (req, res) => {
         message: 'Authenticated'
     })
 })
+app.use('/api/users', authenticateToken, userRoutes.routes)
+
 
 
 
