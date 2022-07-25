@@ -17,6 +17,7 @@ import { useTheme } from "@material-ui/core";
 import { Logo, microsoftIcon } from "../../utils/images";
 import { Link } from "react-router-dom";
 import Stack from "@mui/material/Stack";
+import { msalLogin } from '../../server_assets/auth-provider';
 
 const drawerWidth = 240;
 const navItems = [
@@ -32,6 +33,7 @@ const navItems = [
 function DrawerAppBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [access_token, setAccessToken] = React.useState('');
   const theme = useTheme();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -59,6 +61,15 @@ function DrawerAppBar(props) {
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
+  const handleLogin = async () => {
+    const data = await msalLogin();
+    console.log(data);
+    if (data) {
+      setAccessToken(data.accessToken);
+
+
+    }
+  }
 
   return (
     <>
@@ -94,9 +105,9 @@ function DrawerAppBar(props) {
                 ))}
               </ul>
               <Stack>
-                <Button style={theme.palette.primary.navButton}>
+                <Button style={theme.palette.primary.navButton} onClick={() => handleLogin()}>
                   <span className="d-inline-flex">
-                    <img src={microsoftIcon} alt="" />
+                    <img src={microsoftIcon} alt=""  />
                   </span>
                   Login with Microsoft
                 </Button>
