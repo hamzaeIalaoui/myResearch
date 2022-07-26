@@ -14,7 +14,6 @@ function App() {
   //if the cookies.accessToken exists then check its validity
   if(cookies.accessToken){
     const token = cookies.accessToken;
-    console.log("existing token: "+token)
      axios.post("http://localhost:4000/login", {
       email: process.env.REACT_APP_EMAIL,
       password: process.env.REACT_APP_PASSWORD,
@@ -45,9 +44,9 @@ function App() {
         
         console.log(err)
         if(err.response.status === 403){
-          setCookie('accessToken', '');
-          alert("Your session has expired. Please login again.")
-          window.location.href = "/";
+            setCookie('accessToken', '');
+            alert("Your session has expired. Please sign in again.")
+            window.location.href = "/";
         }
       }
       )
