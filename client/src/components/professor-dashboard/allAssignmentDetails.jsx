@@ -3,7 +3,6 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Stack from "@mui/material/Stack";
@@ -12,16 +11,21 @@ import { EditAssignmentProfessor, ApplyAssignment } from "../../router/routes";
 import { useTheme } from "@material-ui/core";
 import Avatar from "@mui/material/Avatar";
 import { useLocation } from "react-router-dom";
-import { UserDetailsAvatar, userIcon } from "../../utils/images";
-import { useEffect } from "react";
+import { userIcon } from "../../utils/images";
+import { useCookies } from "react-cookie";
+
 
 export default function AllAssignmentsDetails() {
   const { push } = useHistory();
   const { goBack } = useHistory();
   const location = useLocation();
   const theme = useTheme();
+  const [cookies, setCookie] = useCookies();
+  const token=cookies.accessToken;
+  const user=JSON.parse(atob(token.split(".")[1]));
+  console.log(user);
 
-  const [manage, setManage] = React.useState(false);
+   
 
   const onCreateNewClick = (state = null) => {
     push(EditAssignmentProfessor, state);
@@ -55,7 +59,7 @@ export default function AllAssignmentsDetails() {
           </Button>
         </Grid>
         <Grid item xs={1}></Grid>
-        {location?.type != "student" ? (
+        {user?.department !== "Student" ? (
           <Grid item xs={5}>
             <Stack className="justify-content-end" direction="row" spacing={2}>
               <Button

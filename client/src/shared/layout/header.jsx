@@ -3,7 +3,6 @@ import AppBar from "@mui/material/AppBar";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Input from "@mui/material/Input";
 import { styled, alpha } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
@@ -22,7 +21,6 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import Badge from "@mui/material/Badge";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
-
 import { useCookies } from "react-cookie";
 import { useHistory } from "react-router-dom";
 
@@ -122,7 +120,6 @@ export default function Header({ handleDrawerToggle, drawerWidth }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const ariaLabel = { "aria-label": "description" };
   const handleLogout = () => {
     setCookie("accessToken", "");
     history.push("/");

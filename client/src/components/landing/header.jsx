@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -40,7 +39,7 @@ function DrawerAppBar(props) {
   const [access_token, setAccessToken] = React.useState('');
   const theme = useTheme();
   const [cookies, setCookie] = useCookies();
-  const history = useHistory();
+  const history = useHistory(); 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -48,7 +47,7 @@ function DrawerAppBar(props) {
     if (access_token) {
       history.push("/home");
     }
-  }, [access_token]);
+  }, [access_token,history]);
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
