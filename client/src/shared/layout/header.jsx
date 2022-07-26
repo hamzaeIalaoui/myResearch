@@ -24,11 +24,13 @@ import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 
 import { useCookies } from "react-cookie";
+import { useHistory } from "react-router-dom";
 
 export default function Header({ handleDrawerToggle, drawerWidth }) {
   const [cookies, setCookie] = useCookies();
   const token=cookies.accessToken;
   const user=JSON.parse(atob(token.split(".")[1]));
+  const history=useHistory();
 
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -121,6 +123,11 @@ export default function Header({ handleDrawerToggle, drawerWidth }) {
     setAnchorEl(null);
   };
   const ariaLabel = { "aria-label": "description" };
+  const handleLogout = () => {
+    setCookie("accessToken", "");
+    history.push("/");
+    
+  }
   return (
     <AppBar
       position="static"
@@ -210,7 +217,8 @@ export default function Header({ handleDrawerToggle, drawerWidth }) {
                 </Link>
               </div>
               <div>
-                <Link href="#" color="#C9CED6" underline="none">
+                
+                <Link  color="#C9CED6" underline="none" onClick={()=>handleLogout()}>
                   <LogoutIcon />
                 </Link>
               </div>

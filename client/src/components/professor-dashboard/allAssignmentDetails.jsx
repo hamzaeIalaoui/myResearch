@@ -26,10 +26,7 @@ export default function AllAssignmentsDetails() {
   const onCreateNewClick = (state = null) => {
     push(EditAssignmentProfessor, state);
   };
-  // useEffect(() => {
-  //   console.log(location.pathname);
-  //   console.log(location.type);
-  // }, [location]);
+
   const onApplyClick = () => {
     push(ApplyAssignment);
   };

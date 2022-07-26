@@ -40,6 +40,10 @@ exports.signInOutlook = (req, res) => {
         .then(response => response.json())
         .then(data => {
             //create a jwt token
+            console.log(data)
+            if(data.error){
+                res.send(data.error)
+            }
             const token = jwt.sign({
                 name: data.displayName,
                 email: data.email,
@@ -55,5 +59,15 @@ exports.signInOutlook = (req, res) => {
         )
 
   
+}
+exports.checkValidToken = (req, res) => {
+    const token = req.body.token
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+        if (err) {
+            res.sendStatus(403)
+        }
+        res.send(user)
+    }
+    )
 }
 
