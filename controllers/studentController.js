@@ -52,6 +52,14 @@ const studentController = {
       res.status(500).send(error);
     }
   },
+  getAllStudentsWithProfiles: async (req, res) => {
+    try {
+      const studentsWithProfiles = await studentService.findAllWithProfiles();
+      res.json(studentsWithProfiles);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  },
 };
 
 module.exports = studentController;

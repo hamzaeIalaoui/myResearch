@@ -18,6 +18,9 @@ const studentService = {
   delete: async (id) => {
     return await Student.findByIdAndDelete(id);
   },
+  findAllWithProfiles: async () => {
+    return await Student.find().populate('profile');
+  },
 };
 
 module.exports = studentService;
